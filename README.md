@@ -150,9 +150,8 @@ python src/comparativa.py
 
 ## 👥 Integrantes
 
-* Nombre 1
-* Nombre 2
-* Nombre 3
+* Alejandro Ruiz Diaz
+* Sebastian Rendon Grisales
 
 ---
 
