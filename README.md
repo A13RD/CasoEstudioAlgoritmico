@@ -4,6 +4,7 @@
 
 ---
 
+
 ## 📌 Descripción del Proyecto
 
 Este proyecto aborda el problema de optimización en un **sistema de logística y entregas**, donde una empresa de paquetería debe distribuir eficientemente paquetes utilizando una flota de camiones.
@@ -151,7 +152,7 @@ python src/comparativa.py
 ## 👥 Integrantes
 
 * Alejandro Ruiz Diaz
-* Sebastian Rendon Grisales
+* Sebastián Rendón Grisales
 
 ---
 
