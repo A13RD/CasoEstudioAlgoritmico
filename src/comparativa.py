@@ -181,4 +181,26 @@ else:
     print("Caso inválido")
     exit()
 
+# =========================
+# Ejecutar
+# =========================
 
+print("\n========================")
+print("Algoritmo:", nombre_algoritmo)
+print("Caso:", nombre_caso)
+print("========================")
+
+inicio = time.time()
+
+resultado = funcion(
+    paquetes,
+    camiones
+)
+
+fin = time.time()
+
+print("\nResultado:")
+print(resultado)
+
+print("\nTiempo:")
+print(fin - inicio)
