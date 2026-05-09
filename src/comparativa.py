@@ -53,7 +53,9 @@ for nombre, ruta in rutas:
 
     # Paquetes
     for i in range(1, n + 1):
+
         partes = lineas[i].split()
+
         paquetes_temp.append([
             int(partes[0]),
             int(partes[1]),
@@ -64,7 +66,9 @@ for nombre, ruta in rutas:
 
     # Camiones
     for i in range(n + 1, n + 1 + m):
+        
         partes = lineas[i].split()
+
         camiones_temp.append([
             int(partes[0]),
             int(partes[1])
@@ -72,14 +76,17 @@ for nombre, ruta in rutas:
 
     # Asignar según el caso
     if nombre == "pequeno":
+
         paquetes_caso_pequeno = paquetes_temp
         camiones_caso_pequeno = camiones_temp
 
     elif nombre == "mediano":
+
         paquetes_caso_mediano = paquetes_temp
         camiones_caso_mediano = camiones_temp
 
     elif nombre == "grande":
+
         paquetes_caso_grande = paquetes_temp
         camiones_caso_grande = camiones_temp
 
@@ -90,3 +97,88 @@ for nombre, ruta in rutas:
 print("Pequeño:", paquetes_caso_pequeno, camiones_caso_pequeno)
 print("Mediano:", paquetes_caso_mediano, camiones_caso_mediano)
 print("Grande:", paquetes_caso_grande, camiones_caso_grande)
+
+# =========================
+# INPUTS
+# =========================
+
+print("\nAlgoritmos disponibles:")
+print("1. fuerza_bruta")
+print("2. greedy")
+print("3. backtracking")
+print("4. recursivo")
+print("5. divide_y_venceras")
+
+op_algoritmo = input("\nSeleccione algoritmo: ")
+
+print("\nCasos disponibles:")
+print("1. pequeno")
+print("2. mediano")
+print("3. grande")
+
+op_caso = input("\nSeleccione caso: ")
+
+
+# =========================
+# Seleccionar algoritmo
+# =========================
+
+if op_algoritmo == "1":
+
+    funcion = fb.resolver
+    nombre_algoritmo = "Fuerza Bruta"
+
+elif op_algoritmo == "2":
+
+    funcion = gr.resolver
+    nombre_algoritmo = "Greedy"
+
+elif op_algoritmo == "3":
+
+    funcion = bt.resolver
+    nombre_algoritmo = "Backtracking"
+
+elif op_algoritmo == "4":
+
+    funcion = re.resolver
+    nombre_algoritmo = "Recursivo"
+
+elif op_algoritmo == "5":
+
+    funcion = dv.resolver
+    nombre_algoritmo = "Divide y Vencerás"
+
+else:
+
+    print("Algoritmo inválido")
+    exit()
+
+
+# =========================
+# Seleccionar caso
+# =========================
+
+if op_caso == "1":
+
+    paquetes = paquetes_caso_pequeno
+    camiones = camiones_caso_pequeno
+    nombre_caso = "Pequeño"
+
+elif op_caso == "2":
+
+    paquetes = paquetes_caso_mediano
+    camiones = camiones_caso_mediano
+    nombre_caso = "Mediano"
+
+elif op_caso == "3":
+
+    paquetes = paquetes_caso_grande
+    camiones = camiones_caso_grande
+    nombre_caso = "Grande"
+
+else:
+
+    print("Caso inválido")
+    exit()
+
+
