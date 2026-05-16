@@ -7,7 +7,7 @@
 
 ## 📌 Descripción del Proyecto
 
-Este proyecto aborda el problema de optimización en un **sistema de logística y entregas**, donde una empresa de paquetería debe distribuir eficientemente paquetes utilizando una flota de camiones.
+Este proyecto aborda el problema de optimización en un **sistema de logística y entregas (3.1)**, donde una empresa de paquetería debe distribuir eficientemente paquetes utilizando una flota de camiones.
 
 El objetivo es implementar y comparar diferentes técnicas algorítmicas para resolver el problema, analizando su eficiencia, complejidad y calidad de solución.
 
@@ -121,7 +121,7 @@ Cada dataset incluye paquetes con diferentes pesos, destinos y horarios.
 
 ```bash
 git clone <repo-url>
-cd trabajo-final
+cd CasoEstudioAlgoritmico
 ```
 
 2. Ejecutar comparativa:
