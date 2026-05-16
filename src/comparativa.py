@@ -213,31 +213,33 @@ print(fin - inicio)
 
 #FUERZA BRUTA - TIEMPO VS TAMAÑO DE ENTRADA
 
-
 # Datos empíricos
 
-casos = ["Pequeño\n(5 paq, 2 cam)", "Mediano\n(15 paq, 4 cam)", "Grande\n(40 paq, 8 cam)"]
-tiempos = [0.000123, 80.95, None]
-combinaciones = [32, 1073741824, float('inf')]
+casos = [
+    "Pequeño\n(5 paq, 2 cam)",
+    "Mediano\n(15 paq, 4 cam)",
+    "Grande\n(40 paq, 8 cam)"]
 
-# Para graficar el caso grande usamos una estimacion visual ya que no obtuvimos un tiempo real
-tiempos_grafica = [0.000123, 80.95, 150]  # 150 es solo para mostrar que sigue subiendo
+# Tiempos reales obtenidos (None = no terminó)
+tiempos = [0.000443, None, None]
+
+# Valores para graficar (estimados para mediano y grande)
+tiempos_grafica = [0.000443, 80, 150]
 
 colores = ["green", "orange", "red"]
 
-# Grafica
+etiquetas = ["0.000443 seg", "No terminó", "No terminó"]
 
 plt.figure(figsize=(10, 6))
 
-barras = plt.bar(casos, tiempos_grafica, color=colores)
+plt.bar(casos, tiempos_grafica, color=colores)
 
-# Etiquetas
-plt.text(0, tiempos_grafica[0] + 1, "0.000123 seg", ha="center", fontsize=10)
-plt.text(1, tiempos_grafica[1] + 1, "80.95 seg", ha="center", fontsize=10)
-plt.text(2, tiempos_grafica[2] + 1, "No terminó", ha="center", fontsize=10)
+for i, etiqueta in enumerate(etiquetas):
+    plt.text(i, tiempos_grafica[i] + 1, etiqueta, ha="center", fontsize=10)
 
 plt.title("Fuerza Bruta — Tiempo de ejecución vs Tamaño de entrada", fontsize=13)
 plt.xlabel("Caso de prueba", fontsize=11)
 plt.ylabel("Tiempo (segundos)", fontsize=11)
 
 plt.tight_layout()
+plt.show()
