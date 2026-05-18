@@ -186,7 +186,7 @@ elif op_algoritmo == "2":
     plt.bar(casos, tiempos_grafica, color=colores)
 
     for i, etiqueta in enumerate(etiquetas):
-        plt.text(i, tiempos_grafica[i] + 1, etiqueta, ha="center", fontsize=10)
+        plt.text(i, tiempos_grafica[i] * 1.05, etiqueta, ha="center", fontsize=10)
 
     plt.title("Greddy — Tiempo de ejecución vs Tamaño de entrada", fontsize=13)
     plt.xlabel("Caso de prueba", fontsize=11)
@@ -225,7 +225,7 @@ elif op_algoritmo == "3":
     plt.bar(casos, tiempos_grafica, color=colores)
 
     for i, etiqueta in enumerate(etiquetas):
-        plt.text(i, tiempos_grafica[i] + 1, etiqueta, ha="center", fontsize=10)
+        plt.text(i, tiempos_grafica[i] + tiempos_grafica[i] * 0.1, etiqueta, ha="center", fontsize=10)
 
     plt.title("BackTracking — Tiempo de ejecución vs Tamaño de entrada", fontsize=13)
     plt.xlabel("Caso de prueba", fontsize=11)
