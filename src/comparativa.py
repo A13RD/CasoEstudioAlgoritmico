@@ -3,7 +3,6 @@ import backtracking as bt
 import divide_y_venceras as dv
 import fuerza_bruta as fb
 import greedy as gr
-import recursivo as re
 import matplotlib.pyplot as plt 
 
 #inicio = time.time()
@@ -107,8 +106,7 @@ print("\nAlgoritmos disponibles:")
 print("1. fuerza_bruta")
 print("2. greedy")
 print("3. backtracking")
-print("4. recursivo")
-print("5. divide_y_venceras")
+print("4. divide_y_venceras")
 
 op_algoritmo = input("\nSeleccione algoritmo: ")
 
@@ -164,20 +162,82 @@ if op_algoritmo == "1":
 
 elif op_algoritmo == "2":
 
+    #GRAFICAS
+    #GREEDY - TIEMPO VS TAMAÑO DE ENTRADA
+    # Datos empíricos
+
+    casos = [
+        "Pequeño\n(80 paq, 15 cam)",
+        "Mediano\n(700 paq, 120 cam)",
+        "Grande\n(5000 paq, 900 cam)"]
+
+    # Tiempos reales obtenidos (None = no terminó)
+    tiempos = [0.000512, 0.005472, None]
+
+    # Valores para graficar (estimados para mediano y grande)
+    tiempos_grafica = [0.0005, 0.005, 0.01]
+
+    colores = ["green", "orange", "red"]
+
+    etiquetas = ["0.000512 Segundos", "0.005472 Segundos", "No terminó"]
+
+    plt.figure(figsize=(10, 6))
+
+    plt.bar(casos, tiempos_grafica, color=colores)
+
+    for i, etiqueta in enumerate(etiquetas):
+        plt.text(i, tiempos_grafica[i] + 1, etiqueta, ha="center", fontsize=10)
+
+    plt.title("Greddy — Tiempo de ejecución vs Tamaño de entrada", fontsize=13)
+    plt.xlabel("Caso de prueba", fontsize=11)
+    plt.ylabel("Tiempo (segundos)", fontsize=11)
+
+    plt.tight_layout()
+    plt.show()
+
     funcion = gr.resolver
     nombre_algoritmo = "Greedy"
 
 elif op_algoritmo == "3":
 
+    
+    #GRAFICAS
+    #BACKTRACKING - TIEMPO VS TAMAÑO DE ENTRADA
+    # Datos empíricos
+
+    casos = [
+        "Pequeño\n(80 paq, 15 cam)",
+        "Mediano\n(700 paq, 120 cam)",
+        "Grande\n(5000 paq, 900 cam)"]
+
+    # Tiempos reales obtenidos (None = no terminó)
+    tiempos = [0.001530, 0.3733164, None]
+
+    # Valores para graficar (estimados para mediano y grande)
+    tiempos_grafica = [0.001, 0.3, 0.9]
+
+    colores = ["green", "orange", "red"]
+
+    etiquetas = ["0.001530 Segundos", "0.3733164 Segundos", "No terminó"]
+
+    plt.figure(figsize=(10, 6))
+
+    plt.bar(casos, tiempos_grafica, color=colores)
+
+    for i, etiqueta in enumerate(etiquetas):
+        plt.text(i, tiempos_grafica[i] + 1, etiqueta, ha="center", fontsize=10)
+
+    plt.title("BackTracking — Tiempo de ejecución vs Tamaño de entrada", fontsize=13)
+    plt.xlabel("Caso de prueba", fontsize=11)
+    plt.ylabel("Tiempo (segundos)", fontsize=11)
+
+    plt.tight_layout()
+    plt.show()
+
     funcion = bt.resolver
     nombre_algoritmo = "Backtracking"
 
 elif op_algoritmo == "4":
-
-    funcion = re.resolver
-    nombre_algoritmo = "Recursivo"
-
-elif op_algoritmo == "5":
 
     funcion = dv.resolver
     nombre_algoritmo = "Divide y Vencerás"
