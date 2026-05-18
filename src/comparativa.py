@@ -95,9 +95,9 @@ for nombre, ruta in rutas:
 # Verificación
 # =========================
 
-print("Pequeño:", paquetes_caso_pequeno, camiones_caso_pequeno)
-print("Mediano:", paquetes_caso_mediano, camiones_caso_mediano)
-print("Grande:", paquetes_caso_grande, camiones_caso_grande)
+###print("Pequeño:", paquetes_caso_pequeno, camiones_caso_pequeno)
+###print("Mediano:", paquetes_caso_mediano, camiones_caso_mediano)
+###print("Grande:", paquetes_caso_grande, camiones_caso_grande)
 
 # =========================
 # INPUTS
@@ -125,6 +125,39 @@ op_caso = input("\nSeleccione caso: ")
 # =========================
 
 if op_algoritmo == "1":
+
+    #GRAFICAS
+    #FUERZA BRUTA - TIEMPO VS TAMAÑO DE ENTRADA
+    # Datos empíricos
+
+    casos = [
+        "Pequeño\n(80 paq, 15 cam)",
+        "Mediano\n(700 paq, 120 cam)",
+        "Grande\n(5000 paq, 900 cam)"]
+
+    # Tiempos reales obtenidos (None = no terminó)
+    tiempos = [None, None, None]
+
+    # Valores para graficar (estimados para mediano y grande)
+    tiempos_grafica = [10, 160, 770]
+
+    colores = ["green", "orange", "red"]
+
+    etiquetas = ["No terminó", "No terminó", "No terminó"]
+
+    plt.figure(figsize=(10, 6))
+
+    plt.bar(casos, tiempos_grafica, color=colores)
+
+    for i, etiqueta in enumerate(etiquetas):
+        plt.text(i, tiempos_grafica[i] + 1, etiqueta, ha="center", fontsize=10)
+
+    plt.title("Fuerza Bruta — Tiempo de ejecución vs Tamaño de entrada", fontsize=13)
+    plt.xlabel("Caso de prueba", fontsize=11)
+    plt.ylabel("Tiempo (segundos)", fontsize=11)
+
+    plt.tight_layout()
+    plt.show()
 
     funcion = fb.resolver
     nombre_algoritmo = "Fuerza Bruta"
@@ -205,41 +238,3 @@ print(resultado)
 
 print("\nTiempo:")
 print(fin - inicio)
-
-
-# --------------------------------------------------------------------------------------------
-#ENTREGA 1
-#GRAFICAS
-
-#FUERZA BRUTA - TIEMPO VS TAMAÑO DE ENTRADA
-
-# Datos empíricos
-
-casos = [
-    "Pequeño\n(5 paq, 2 cam)",
-    "Mediano\n(15 paq, 4 cam)",
-    "Grande\n(40 paq, 8 cam)"]
-
-# Tiempos reales obtenidos (None = no terminó)
-tiempos = [0.000443, None, None]
-
-# Valores para graficar (estimados para mediano y grande)
-tiempos_grafica = [0.000443, 80, 150]
-
-colores = ["green", "orange", "red"]
-
-etiquetas = ["0.000443 seg", "No terminó", "No terminó"]
-
-plt.figure(figsize=(10, 6))
-
-plt.bar(casos, tiempos_grafica, color=colores)
-
-for i, etiqueta in enumerate(etiquetas):
-    plt.text(i, tiempos_grafica[i] + 1, etiqueta, ha="center", fontsize=10)
-
-plt.title("Fuerza Bruta — Tiempo de ejecución vs Tamaño de entrada", fontsize=13)
-plt.xlabel("Caso de prueba", fontsize=11)
-plt.ylabel("Tiempo (segundos)", fontsize=11)
-
-plt.tight_layout()
-plt.show()
