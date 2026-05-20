@@ -188,7 +188,7 @@ elif op_algoritmo == "2":
     for i, etiqueta in enumerate(etiquetas):
         plt.text(i, tiempos_grafica[i] * 1.05, etiqueta, ha="center", fontsize=10)
 
-    plt.title("Greddy — Tiempo de ejecución vs Tamaño de entrada", fontsize=13)
+    plt.title("Greedy — Tiempo de ejecución vs Tamaño de entrada", fontsize=13)
     plt.xlabel("Caso de prueba", fontsize=11)
     plt.ylabel("Tiempo (segundos)", fontsize=11)
 
@@ -238,6 +238,40 @@ elif op_algoritmo == "3":
     nombre_algoritmo = "Backtracking"
 
 elif op_algoritmo == "4":
+
+    #GRAFICAS
+    #DIVIDE Y VENCERAS - TIEMPO VS TAMAÑO DE ENTRADA
+    # Datos empíricos
+
+    casos = [
+        "Pequeño\n(80 paq, 15 cam)",
+        "Mediano\n(700 paq, 120 cam)",
+        "Grande\n(5000 paq, 900 cam)"]
+
+    # Tiempos reales obtenidos (None = no terminó)
+    tiempos = [0.0000935, 0.001338, 0.05358]
+
+    # Valores para graficar (estimados para mediano y grande)
+    tiempos_grafica = [0.001, 0.3, 0.9]
+
+    colores = ["green", "orange", "red"]
+
+    etiquetas = ["0.0000935 seg", "0.001338 seg", "0.05358 seg"]
+
+    plt.figure(figsize=(10, 6))
+
+    plt.bar(casos, tiempos_grafica, color=colores)
+
+    for i, etiqueta in enumerate(etiquetas):
+        plt.text(i, tiempos_grafica[i] + tiempos_grafica[i] * 0.1, etiqueta, ha="center", fontsize=10)
+
+    plt.title("Divide y Vencerás — Tiempo de ejecución vs Tamaño de entrada", fontsize=13)
+    plt.xlabel("Caso de prueba", fontsize=11)
+    plt.ylabel("Tiempo (segundos)", fontsize=11)
+
+    plt.tight_layout()
+    plt.show()
+
 
     funcion = dv.resolver
     nombre_algoritmo = "Divide y Vencerás"
