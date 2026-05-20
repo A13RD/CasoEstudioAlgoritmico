@@ -1,6 +1,4 @@
-def backtracking(paquetes, camiones, indice,
-                 cargas, asignacion,
-                 mejor):
+def backtracking(paquetes, camiones, indice, cargas, asignacion,mejor):
 
     # Caso base
     if indice == len(paquetes):
