@@ -102,20 +102,27 @@ for nombre, ruta in rutas:
 # INPUTS
 # =========================
 
-print("\nAlgoritmos disponibles:")
+print("\nAlgoritmos disponibles / grafica general:")
 print("1. fuerza_bruta")
 print("2. greedy")
 print("3. backtracking")
 print("4. divide_y_venceras")
+print("5. grafica comparativa (todos)")
 
 op_algoritmo = input("\nSeleccione algoritmo: ")
 
-print("\nCasos disponibles:")
-print("1. pequeno")
-print("2. mediano")
-print("3. grande")
+if op_algoritmo == "5":
 
-op_caso = input("\nSeleccione caso: ")
+    pass
+
+else:
+
+    print("\nCasos disponibles:")
+    print("1. pequeno")
+    print("2. mediano")
+    print("3. grande")
+
+    op_caso = input("\nSeleccione caso: ")
 
 
 # =========================
@@ -276,6 +283,50 @@ elif op_algoritmo == "4":
     funcion = dv.resolver
     nombre_algoritmo = "Divide y Vencerás"
 
+elif op_algoritmo == "5":
+
+    # GRAFICA COMPARATIVA - TODOS LOS ALGORITMOS
+
+    casos = ["Pequeño\n(80 paq, 15 cam)", "Mediano\n(700 paq, 120 cam)", "Grande\n(5000 paq, 900 cam)"]
+
+    # Tiempos reales por algoritmo (None = no terminó, se omite en la grafica)
+    datos = {
+        "Greedy":           [0.000512, 0.005472, None],
+        "Backtracking":     [0.001530, 0.3733164, None],
+        "Divide y Vencerás":[0.0000935, 0.001338, 0.05358],}
+
+    colores = {
+        "Greedy": "blue",
+        "Backtracking": "orange",
+        "Divide y Vencerás": "green",}
+
+    plt.figure(figsize=(10, 6))
+
+    for algoritmo, tiempos in datos.items():
+
+        x = []
+        y = []
+
+        for i, t in enumerate(tiempos):
+            if t is not None:
+                x.append(casos[i])
+                y.append(t)
+
+        plt.plot(x, y, marker="o", label=algoritmo, color=colores[algoritmo])
+
+        for xi, yi in zip(x, y):
+            plt.text(xi, yi + yi * 0.05, f"{yi} seg", ha="center", fontsize=8)
+
+    plt.yscale("log")
+    plt.title("Comparativa de algoritmos — Tiempo vs Tamaño de entrada", fontsize=13)
+    plt.xlabel("Caso de prueba", fontsize=11)
+    plt.ylabel("Tiempo (segundos)", fontsize=11)
+    plt.legend()
+    plt.tight_layout()
+    plt.show()
+
+    exit()
+
 else:
 
     print("Algoritmo inválido")
@@ -322,8 +373,7 @@ inicio = time.time()
 
 resultado = funcion(
     paquetes,
-    camiones
-)
+    camiones)
 
 fin = time.time()
 
