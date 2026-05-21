@@ -1,4 +1,4 @@
-def asignar(paquetes, camiones, indice, cargas, asignacion):
+def recursivo(paquetes, camiones, indice, cargas, asignacion):
 
     # Caso base: ya se procesaron todos los paquetes
     if indice == len(paquetes):
@@ -18,21 +18,18 @@ def asignar(paquetes, camiones, indice, cargas, asignacion):
             cargas[i] += peso
             asignacion[i].append(id_paquete)
 
-            return asignar(paquetes, camiones, indice + 1, cargas, asignacion)
+            return recursivo(paquetes, camiones, indice + 1, cargas, asignacion)
 
     # Si no cabe en ningun camion, saltar el paquete
-    return asignar(paquetes, camiones, indice + 1, cargas, asignacion)
+    return recursivo(paquetes, camiones, indice + 1, cargas, asignacion)
 
 
 def resolver(paquetes, camiones):
 
-    # Estrategia greedy: asignar primero los paquetes de mayor prioridad
-    paquetes = sorted(paquetes, key=lambda p: p[4], reverse=True)
-
     cargas = [0] * len(camiones)
     asignacion = [[] for _ in camiones]
 
-    resultado = asignar(paquetes, camiones, 0, cargas, asignacion)
+    resultado = recursivo(paquetes, camiones, 0, cargas, asignacion)
 
     asignacion_final = {}
 

@@ -3,6 +3,7 @@ import backtracking as bt
 import divide_y_venceras as dv
 import fuerza_bruta as fb
 import greedy as gr
+import recursivo as rec
 import matplotlib.pyplot as plt 
 
 #inicio = time.time()
@@ -104,14 +105,15 @@ for nombre, ruta in rutas:
 
 print("\nAlgoritmos disponibles / grafica general:")
 print("1. fuerza_bruta")
-print("2. greedy")
-print("3. backtracking")
-print("4. divide_y_venceras")
-print("5. grafica comparativa (todos)")
+print("2. recursivo")
+print("3. greedy")
+print("4. backtracking")
+print("5. divide_y_venceras")
+print("6. grafica comparativa (todos)")
 
 op_algoritmo = input("\nSeleccione algoritmo: ")
 
-if op_algoritmo == "5":
+if op_algoritmo == "6":
 
     pass
 
@@ -168,9 +170,8 @@ if op_algoritmo == "1":
     nombre_algoritmo = "Fuerza Bruta"
 
 elif op_algoritmo == "2":
-
     #GRAFICAS
-    #GREEDY - TIEMPO VS TAMAÑO DE ENTRADA
+    #RECURSIVO - TIEMPO VS TAMAÑO DE ENTRADA
     # Datos empíricos
 
     casos = [
@@ -179,14 +180,14 @@ elif op_algoritmo == "2":
         "Grande\n(5000 paq, 900 cam)"]
 
     # Tiempos reales obtenidos (None = no terminó)
-    tiempos = [0.000512, 0.005472, None]
+    tiempos = [0.000854, 0.001466, None]
 
     # Valores para graficar (estimados para mediano y grande)
     tiempos_grafica = [0.0005, 0.005, 0.01]
 
     colores = ["green", "orange", "red"]
 
-    etiquetas = ["0.000512 Segundos", "0.005472 Segundos", "No terminó"]
+    etiquetas = ["0.000854 Segundos", "0.001466 Segundos", "No terminó"]
 
     plt.figure(figsize=(10, 6))
 
@@ -194,6 +195,47 @@ elif op_algoritmo == "2":
 
     for i, etiqueta in enumerate(etiquetas):
         plt.text(i, tiempos_grafica[i] * 1.05, etiqueta, ha="center", fontsize=10)
+
+    plt.title("Recursivo — Tiempo de ejecución vs Tamaño de entrada", fontsize=13)
+    plt.xlabel("Caso de prueba", fontsize=11)
+    plt.ylabel("Tiempo (segundos)", fontsize=11)
+
+    plt.tight_layout()
+    plt.show()
+
+    funcion = rec.resolver
+    nombre_algoritmo = "Recursivo"
+
+
+elif op_algoritmo == "3":
+
+    # GRAFICA - GREEDY
+    
+
+    casos = [
+        "Pequeño\n(80 paq, 15 cam)",
+        "Mediano\n(700 paq, 120 cam)",
+        "Grande\n(5000 paq, 900 cam)"]
+    
+    tiempos = [0.000128, 0.001667, None]
+
+    tiempos_grafica = [0.000128, 0.001667, 0.003]
+
+    colores = ["green", "orange", "red"]
+
+    etiquetas = [
+        "0.000128 seg",
+        "0.001667 seg",
+        "No terminó"]
+
+    plt.figure(figsize=(10, 6))
+
+    plt.bar(casos, tiempos_grafica, color=colores)
+
+    for i, etiqueta in enumerate(etiquetas):
+        plt.text(i, tiempos_grafica[i] * 1.1, etiqueta, ha="center", fontsize=10)
+
+    plt.ylim(0, max(tiempos_grafica) * 1.3)
 
     plt.title("Greedy — Tiempo de ejecución vs Tamaño de entrada", fontsize=13)
     plt.xlabel("Caso de prueba", fontsize=11)
@@ -204,8 +246,9 @@ elif op_algoritmo == "2":
 
     funcion = gr.resolver
     nombre_algoritmo = "Greedy"
+    
 
-elif op_algoritmo == "3":
+elif op_algoritmo == "4":
 
     
     #GRAFICAS
@@ -244,7 +287,7 @@ elif op_algoritmo == "3":
     funcion = bt.resolver
     nombre_algoritmo = "Backtracking"
 
-elif op_algoritmo == "4":
+elif op_algoritmo == "5":
 
     #GRAFICAS
     #DIVIDE Y VENCERAS - TIEMPO VS TAMAÑO DE ENTRADA
@@ -283,19 +326,23 @@ elif op_algoritmo == "4":
     funcion = dv.resolver
     nombre_algoritmo = "Divide y Vencerás"
 
-elif op_algoritmo == "5":
+elif op_algoritmo == "6":
 
     # GRAFICA COMPARATIVA - TODOS LOS ALGORITMOS
 
-    casos = ["Pequeño\n(80 paq, 15 cam)", "Mediano\n(700 paq, 120 cam)", "Grande\n(5000 paq, 900 cam)"]
+    casos = [
+        "Pequeño\n(80 paq, 15 cam)",
+        "Mediano\n(700 paq, 120 cam)",
+        "Grande\n(5000 paq, 900 cam)"]
 
-    # Tiempos reales por algoritmo (None = no terminó, se omite en la grafica)
     datos = {
-        "Greedy":           [0.000512, 0.005472, None],
+        "Recursivo":        [0.000854, 0.001466, None],
+        "Greedy":           [0.000128, 0.001667, None],
         "Backtracking":     [0.001530, 0.3733164, None],
         "Divide y Vencerás":[0.0000935, 0.001338, 0.05358],}
 
     colores = {
+        "Recursivo": "purple",
         "Greedy": "blue",
         "Backtracking": "orange",
         "Divide y Vencerás": "green",}
@@ -324,7 +371,6 @@ elif op_algoritmo == "5":
     plt.legend()
     plt.tight_layout()
     plt.show()
-
     exit()
 
 else:
